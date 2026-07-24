@@ -22,7 +22,6 @@
     "react-icons": "^5.7.0",
     "react-parallax-tilt": "^1.7.333",
     "react-ripples": "^2.2.1",
-    "react-tsparticles": "^2.12.2",
     "tsparticles": "^4.3.2"
   },
   "devDependencies": {
