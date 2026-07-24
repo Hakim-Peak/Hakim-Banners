@@ -1,19 +1,20 @@
-import { useState, useEffect, useRef, Component, type ReactNode } from 'react';
-import YGOBanner from '@/pages/ygo-banner';
-import AizenBanner from '@/pages/aizen-banner';
-import EmoBanner from '@/pages/emo-banner';
-import RobloxBanner from '@/pages/roblox-banner';
-import YGOServerBanner from '@/pages/ygo-server-banner';
-import NysetteBanner from '@/pages/nysette-banner';
-import RolandBanner from '@/pages/roland-banner';
-import LamineBanner from '@/pages/lamine-banner';
-import GojoBanner from '@/pages/gojo-banner';
-import BasilBanner from '@/pages/basil-banner';
-import SunnyBanner from '@/pages/sunny-banner';
-import SimoBanner from '@/pages/simo-banner';
-import YGOServer2Banner from '@/pages/ygo-server2-banner';
-import ItachiBanner from '@/pages/itachi-banner';
-import ObitoBanner from '@/pages/obito-banner';
+import { useState, useEffect, useRef, Component, type ReactNode, lazy, Suspense } from 'react';
+
+const YGOBanner = lazy(() => import('@/pages/ygo-banner'));
+const AizenBanner = lazy(() => import('@/pages/aizen-banner'));
+const EmoBanner = lazy(() => import('@/pages/emo-banner'));
+const RobloxBanner = lazy(() => import('@/pages/roblox-banner'));
+const YGOServerBanner = lazy(() => import('@/pages/ygo-server-banner'));
+const NysetteBanner = lazy(() => import('@/pages/nysette-banner'));
+const RolandBanner = lazy(() => import('@/pages/roland-banner'));
+const LamineBanner = lazy(() => import('@/pages/lamine-banner'));
+const GojoBanner = lazy(() => import('@/pages/gojo-banner'));
+const BasilBanner = lazy(() => import('@/pages/basil-banner'));
+const SunnyBanner = lazy(() => import('@/pages/sunny-banner'));
+const SimoBanner = lazy(() => import('@/pages/simo-banner'));
+const YGOServer2Banner = lazy(() => import('@/pages/ygo-server2-banner'));
+const ItachiBanner = lazy(() => import('@/pages/itachi-banner'));
+const ObitoBanner = lazy(() => import('@/pages/obito-banner'));
 
 type Banner = 'ygo' | 'aizen' | 'emo' | 'roblox' | 'ygo-server' | 'nysette' | 'roland' | 'lamine' | 'gojo' | 'basil' | 'sunny' | 'simo' | 'ygo-server2' | 'itachi' | 'obito';
 
@@ -249,7 +250,7 @@ export default function App() {
             alignItems: 'center',
           }}>
             {[
-              { value: '14', label: 'Banners' },
+              { value: '15', label: 'Banners' },
               { value: '4', label: 'Themes' },
               { value: '∞', label: 'Ideas' },
             ].map((s, i) => (
@@ -359,10 +360,21 @@ export default function App() {
             transformOrigin: 'center center',
           }}>
             <ErrorBoundary key={active}>
-              {(() => {
-                const BannerComponent = BANNER_MAP[active];
-                return <BannerComponent />;
-              })()}
+              <Suspense fallback={
+                <div style={{
+                  width: BANNER_SIZES[active].w, height: BANNER_SIZES[active].h,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: '12px',
+                  color: 'hsl(220,10%,30%)', letterSpacing: '0.1em',
+                }}>
+                  Loading...
+                </div>
+              }>
+                {(() => {
+                  const BannerComponent = BANNER_MAP[active];
+                  return <BannerComponent />;
+                })()}
+              </Suspense>
             </ErrorBoundary>
           </div>
 
