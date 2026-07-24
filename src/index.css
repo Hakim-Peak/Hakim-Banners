@@ -960,6 +960,56 @@ body {
 }
 
 /* ═══════════════════════════════════════════
+   Obito Banner
+   ═══════════════════════════════════════════ */
+@keyframes obitoRinneganSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes obitoRinneganPulse {
+  0%   { transform: scale(0.95); opacity: 0.8; }
+  50%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+@keyframes obitoCrackPulse {
+  0%   { opacity: 0.03; }
+  50%  { opacity: 0.1; }
+  100% { opacity: 0.05; }
+}
+@keyframes obitoRingExpand {
+  0%   { width: 0px; height: 0px; margin-left: 0px; margin-top: 0px; opacity: 0.12; border-width: 1px; }
+  100% { width: 200px; height: 200px; margin-left: -100px; margin-top: -100px; opacity: 0; border-width: 0.5px; }
+}
+@keyframes obitoOrbFloat {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-12px) scale(1.15); }
+}
+@keyframes obitoKanjiFloat {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+  100% { transform: translateY(-10px) translateX(5px) rotate(2deg); }
+}
+@keyframes obitoScanMove {
+  0%   { top: -2px; }
+  100% { top: 242px; }
+}
+.obito-strike-thin {
+  position: relative;
+  display: inline-block;
+}
+.obito-strike-thin::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 0.5px;
+  background: hsla(0,0%,100%,0.12);
+  width: 0;
+  opacity: 0;
+  animation: itachiStrike 2s ease 2.5s forwards;
+}
+
+/* ═══════════════════════════════════════════
    Portfolio
    ═══════════════════════════════════════════ */
 

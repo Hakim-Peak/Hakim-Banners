@@ -13,8 +13,9 @@ import SunnyBanner from '@/pages/sunny-banner';
 import SimoBanner from '@/pages/simo-banner';
 import YGOServer2Banner from '@/pages/ygo-server2-banner';
 import ItachiBanner from '@/pages/itachi-banner';
+import ObitoBanner from '@/pages/obito-banner';
 
-type Banner = 'ygo' | 'aizen' | 'emo' | 'roblox' | 'ygo-server' | 'nysette' | 'roland' | 'lamine' | 'gojo' | 'basil' | 'sunny' | 'simo' | 'ygo-server2' | 'itachi';
+type Banner = 'ygo' | 'aizen' | 'emo' | 'roblox' | 'ygo-server' | 'nysette' | 'roland' | 'lamine' | 'gojo' | 'basil' | 'sunny' | 'simo' | 'ygo-server2' | 'itachi' | 'obito';
 
 const TABS: { id: Banner; label: string; color: string }[] = [
   { id: 'ygo',         label: 'YGO',             color: 'hsl(210,100%,70%)' },
@@ -31,6 +32,7 @@ const TABS: { id: Banner; label: string; color: string }[] = [
   { id: 'simo',        label: 'Simo',            color: 'hsl(210,50%,65%)' },
   { id: 'ygo-server2', label: 'Duelist Legacy',  color: 'hsl(345,70%,60%)' },
   { id: 'itachi',      label: 'Itachi',          color: 'hsl(0,60%,45%)' },
+  { id: 'obito',       label: 'Obito',           color: 'hsl(0,0%,75%)' },
 ];
 
 const BANNER_SIZES: Record<Banner, { w: number; h: number }> = {
@@ -48,6 +50,7 @@ const BANNER_SIZES: Record<Banner, { w: number; h: number }> = {
   'simo':        { w: 680, h: 240 },
   'ygo-server2': { w: 680, h: 240 },
   'itachi':      { w: 680, h: 240 },
+  'obito':       { w: 680, h: 240 },
 };
 
 function GlitchName() {
@@ -168,6 +171,7 @@ const BANNER_MAP: Record<Banner, React.FC> = {
   'simo': SimoBanner,
   'ygo-server2': YGOServer2Banner,
   'itachi': ItachiBanner,
+  'obito': ObitoBanner,
 };
 
 export default function App() {
